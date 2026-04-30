@@ -1,5 +1,5 @@
 import Link from "next/link";
-import userAvater from "@/assets/demo-user.png"
+import userAvater from "@/assets/user.png"
 import Image from "next/image";
 import NavLink from "./NavLink";
 

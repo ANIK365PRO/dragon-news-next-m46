@@ -1,6 +1,11 @@
 import Link from 'next/link';
 import React from 'react';
 
+export const metadata = {
+  title: "Dragon News - Back to home",
+  description: "Best news portal in Bangladesh not found",
+};
+
 const NotFound = () => {
     return (
         <div className='flex items-center justify-center flex-col space-y-4 mt-40'>

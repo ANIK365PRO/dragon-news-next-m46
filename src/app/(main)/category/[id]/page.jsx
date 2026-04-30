@@ -6,7 +6,10 @@ import React from 'react';
 
 
 
-
+export const metadata = {
+  title: "Dragon News - Category",
+  description: "Best news portal in Bangladesh",
+};
 
 
 const NewsCategoryPage = async({params}) => {
