@@ -1,25 +1,43 @@
 'use client'
+import { authClient } from '@/lib/auth-client';
 import Link from 'next/link';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 
 const SignUpPage = () => {
 
-    const { register,
+    const { 
+            register,
             handleSubmit,
             watch,
-            formState: { errors },} = useForm()
+            formState: { errors },
 
-    const onSubmit = (data) => {
+        } = useForm()  //react hook form
+
+    
+    
+    const onSubmit = async (data) => {
         console.log(data)
         const {name, photo, email, password} = data
-        console.log(name, photo)
+        console.log(name, photo, email, password)
+
+        const { data:res, error } = await authClient.signUp.email({
+            name: name , // required
+            image: photo , // required
+            email: email , // required
+            password: password, // required
+           
+            callbackURL: "/",
+        });
+
+        console.log(res, error , 'res, error')
+
     }
 
-    console.log(errors, 'errors')
+    console.log(errors, 'errors missing')
 
     return (
-        <div className='flex flex-col items-center justify-center'>
+        <div className='flex flex-col justify-center items-center'>
              <div className='space-y-2 border border-zinc-100/75 rounded-2xl p-8 bg-zinc-100'>
                 <h2 className='text-lg'>Sign Up your account</h2>
                 <form onSubmit={handleSubmit(onSubmit)} className='border border-zinc-100/95 p-2 rounded-2xl '>
